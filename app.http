@@ -1,0 +1,28 @@
+GET http://localhost:3000/books
+###
+
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+    "title": "Breaking Bad",
+    "author": "George R. R. Martin",
+    "genre": "Triller",
+    "pages": "600",
+    "publishedDate": "2003-07-15"
+}
+###
+
+PUT http://localhost:3000/books/30/
+Content-Type: application/json
+
+{
+    "title": "Game of Thrones Specials",
+    "author": "George R. R. Martin",
+    "genre": "Fantasy",
+    "pages": "800",
+    "publishedDate": "1995-07-15"
+}
+
+###
+DELETE http://localhost:3000/books/36/
