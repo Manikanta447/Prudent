@@ -81,6 +81,32 @@ app.post('/books', async (request, response) => {
     response.status(201).send({message: 'Book added successfully', id: result.lastID})
 })
 
+app.get('/authors', async (request, response) => {
+    const getAuthors = `SELECT * FROM Authors`
+    let authors
+    try{
+        const result = await db.all(getAuthors)
+        authors = result
+    }catch(error){
+        console.log(error)
+        response.status(500).send({message: 'Error fetching Authors'})
+    }
+    response.send(authors)
+})
+
+app.get(`/genres`, async (request, response) => {
+    const getGenres = `SELECT * FROM Genres`
+    let genres
+    try{
+        const result = await db.all(getGenres)
+        genres = result
+    }catch(error){
+        console.log(error)
+        response.status(500).send({message: 'Error fetching Genres'})
+    }
+    response.send(genres)
+})
+
 app.put('/books/:id/', async (request, response) => {
     const {id} = request.params
     const {title, author, genre, pages, publishedDate} = request.body
