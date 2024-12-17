@@ -33,7 +33,7 @@ app.get("/books", async (request, response) => {
 
     const offset = (pageNum - 1) * limitNum
     const query = `
-        SELECT * FROM Books
+        SELECT * FROM Books INNER JOIN Authors ON Books.author_id = Authors.author_id INNER JOIN Genres ON Books.genre_id = Genres.genre_id
         LIMIT ${limitNum} OFFSET ${offset};
     `
     let books
